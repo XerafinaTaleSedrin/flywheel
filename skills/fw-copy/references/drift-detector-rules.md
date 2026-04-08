@@ -14,7 +14,15 @@ Before any drafting begins, extract claims from `docs/positioning/current.md`. P
 
 ### Extraction Rules
 
-**From Section 2 — Unique Attributes:**
+**From the Competitive Alternatives section (## 1. Competitive Alternatives):**
+Extract each row of the alternatives table:
+- The alternative name
+- Type (direct competitor, indirect, manual process, do nothing)
+- Why customers choose it
+
+Each named alternative becomes one **competitive reference**. These are used to verify that any competitor named in the draft is actually in the canvas.
+
+**From the Unique Attributes section (## 2. Unique Attributes):**
 Extract each row of the attributes table:
 - The attribute name
 - Which alternatives lack it
@@ -22,13 +30,13 @@ Extract each row of the attributes table:
 
 Each row becomes one **attribute claim**.
 
-**From Section 3 — Value:**
+**From the Value section (## 3. Value):**
 Extract each row of the value chain table:
 - Unique attribute → capability it enables → outcome for the customer
 
 Each row becomes one **value chain claim**. These are the primary grounding anchors for copy.
 
-**From Section 4 — Customer Segments:**
+**From the Customer Segments section (## 4. Customer Segments):**
 Extract each row of the segments table:
 - Segment description
 - Why this value matters to them specifically
@@ -36,7 +44,7 @@ Extract each row of the segments table:
 
 Each row becomes one **segment claim**.
 
-**From Section 5 — Market Frame of Reference:**
+**From the Market Frame section (## 5. Market Frame of Reference):**
 Extract:
 - The claimed frame
 - Why this frame was chosen
@@ -71,6 +79,7 @@ A **claim** is any statement that asserts:
 - A capability the product has
 - A benefit or outcome for the customer
 - A difference from alternatives or competitors
+- A named competitor or alternative (must match the canvas's competitive alternatives list)
 - A description of who the product is for
 - A category or frame ("the X for Y", "a new kind of Z")
 
@@ -119,6 +128,16 @@ The draft claim is a logical, specific consequence of a canvas claim. The deriva
 - Adding capabilities not in the canvas
 - Implying superiority over alternatives not named in the canvas
 - Extrapolating outcomes the canvas doesn't support
+
+**Competitive Reference Match**
+When the draft names a specific competitor or alternative, check whether that name appears in the canvas's Competitive Alternatives section.
+- Draft: "Unlike Notion, we..."
+- Canvas Section 1 lists Notion as a competitive alternative
+- Result: **Grounded** — named alternative is in the canvas
+
+- Draft: "Unlike Coda, we..."
+- Canvas Section 1 does not list Coda
+- Result: **Ungrounded — off-canvas competitor reference**
 
 **No Match — Ungrounded**
 The draft claim cannot be traced to any canvas claim through direct or derived matching.
@@ -190,8 +209,8 @@ These patterns are almost always ungrounded unless the canvas explicitly support
 - **Superlatives:** "the best", "industry-leading", "world-class", "cutting-edge", "state-of-the-art"
 - **Vague benefits:** "save time", "boost productivity", "streamline your workflow", "take it to the next level"
 - **Unanchored differentiation:** "unlike anything else", "the only solution", "revolutionary", "game-changing"
-- **Feature claims not in attributes:** any capability not listed in Section 2 of the canvas
-- **Broader segments than canvas:** addressing a wider audience than Section 4 defines
+- **Feature claims not in attributes:** any capability not listed in the Unique Attributes section of the canvas
+- **Broader segments than canvas:** addressing a wider audience than the Customer Segments section defines
 - **Implied social proof:** "trusted by thousands", "the industry standard" — unless backed by data the user provides during the copy session
 
 ---

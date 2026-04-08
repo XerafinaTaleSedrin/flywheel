@@ -2,12 +2,7 @@
 
 Reference file for `/fw:compound`. Contains redirect and warning text for the compound skill.
 
-## Enforcement Levels
-
-**Level 1 — Redirect with reasoning.** Used on the first attempt to give a vague or redundant answer.
-**Level 2 — Warn and proceed.** Used on the second attempt. Save what's there with a note.
-
-The compound skill has lighter enforcement than `/fw:position` or `/fw:copy` — it's a capture tool, not a framework. But it still enforces specificity.
+Enforcement levels (redirect → warn → let the output speak) are defined in `AGENTS.md`. The compound skill uses lighter enforcement than `/fw:position` or `/fw:copy` — it's a capture tool, not a framework — but still enforces specificity. This file contains the skill-specific redirect and warning text for `/fw:compound`.
 
 ---
 

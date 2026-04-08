@@ -2,11 +2,7 @@
 
 Reference file for `/fw:grow`. Contains redirect and warning text for each step of the growth experiment sequence.
 
-## Enforcement Levels
-
-**Level 1 — Redirect with reasoning.** Used on the first attempt to skip or give a vague answer.
-**Level 2 — Warn and flag.** Used on the second attempt. Proceed but add a flag to the experiment card.
-**Level 3 — Let the output speak.** The experiment card will be obviously incomplete to anyone reading it.
+Enforcement levels (redirect → warn → let the output speak) are defined in `AGENTS.md`. This file contains the skill-specific redirect and warning text for `/fw:grow`.
 
 ---
 

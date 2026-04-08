@@ -37,7 +37,7 @@ Search `docs/growth-experiments/` for existing files.
 **If any exist:** Summarize:
 > "You have [N] prior experiments. [Brief summary: which behaviors targeted, which completed, what results]. Want to review any before designing a new one?"
 
-Note experiments that are still running (no `result` field) — avoid designing experiments that conflict with active ones.
+Note experiments that are still running (`status: running`) — avoid designing experiments that conflict with active ones.
 
 **If none:** Proceed.
 

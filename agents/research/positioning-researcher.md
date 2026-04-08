@@ -24,11 +24,11 @@ Always start by reading `docs/positioning/current.md` in full. This is the activ
 
 Extract:
 - The product/company being positioned
-- All competitive alternatives (Section 1)
-- All unique attributes (Section 2)
-- All value chains (Section 3)
-- Customer segments (Section 4)
-- Market frame (Section 5)
+- All competitive alternatives (## 1. Competitive Alternatives)
+- All unique attributes (## 2. Unique Attributes)
+- All value chains (## 3. Value)
+- Customer segments (## 4. Customer Segments)
+- Market frame (## 5. Market Frame of Reference)
 - The positioning statement
 - Skip flags (if any)
 - Confidence level

@@ -2,11 +2,7 @@
 
 Reference file for `/fw:position`. Contains redirect and warning text for each step of the positioning sequence.
 
-## Enforcement Levels
-
-**Level 1 — Redirect with reasoning.** Used on the first attempt to skip or give a vague answer.
-**Level 2 — Warn and flag.** Used on the second attempt. Proceed but add a skip flag to the canvas.
-**Level 3 — Let the output speak.** Downstream skills (`/fw:copy`, `/fw:grow`) surface the gap.
+Enforcement levels (redirect → warn → let the output speak) are defined in `AGENTS.md`. This file contains the skill-specific redirect and warning text for `/fw:position`.
 
 ---
 

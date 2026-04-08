@@ -1,6 +1,6 @@
 ---
 name: fw:compound
-description: Save session learnings to knowledge stores so future sessions get smarter. Captures positioning insights, copy test outcomes, and cross-session patterns. Use after any /fw:position or /fw:copy session, or when returning with real-world results.
+description: Save session learnings to knowledge stores so future sessions get smarter. Captures positioning insights, copy test outcomes, and cross-session patterns. Use after any /fw:position, /fw:copy, or /fw:grow session, or when returning with real-world results.
 argument-hint: "[optional: what you learned, or 'outcome' to record real-world results]"
 ---
 
@@ -185,7 +185,15 @@ evidence-from:
 
 #### Outcome Recording
 
-Update the `## Outcome Notes` section of the specific artifact in `docs/copy-tests/` or `docs/growth-experiments/`.
+Update the specific artifact in `docs/copy-tests/` or `docs/growth-experiments/`.
+
+**For copy tests:** Update the `## Outcome Notes` section with the recorded results.
+
+**For growth experiments:** Update both:
+1. The `## Result` and `## Learnings` body sections with the recorded results
+2. The YAML frontmatter: set `status: completed` and populate `result:` with a brief summary of the outcome
+
+This frontmatter update is critical — the growth-researcher agent uses `status` and `result` fields to classify experiments. Without it, completed experiments will keep appearing as pending in future `/fw:grow` sessions.
 
 If the user doesn't specify which artifact, list recent ones:
 > "Which artifact are you recording outcomes for? [list recent files with dates and types]"

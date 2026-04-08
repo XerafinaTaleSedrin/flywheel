@@ -160,7 +160,7 @@ After user approval:
 
 - Write the canvas to `docs/positioning/current.md`
 - If a previous `current.md` was archived, note that in the canvas frontmatter
-- Set frontmatter fields: type, tags (extracted from the session), confidence (ask the user), created date, source
+- Set frontmatter fields: type, tags (extracted from the session), confidence (ask the user), created date, last-updated (today's date), source
 
 ## After Saving
 

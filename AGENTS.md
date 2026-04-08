@@ -36,13 +36,13 @@ flywheel/
 
 * Reference files (templates, prompts) live in `skills/{skill-name}/references/`
 
-* Research agents live in `agents/research/`
+* Research agents live in `agents/research/`. They are invoked as subagents by skills during preflight checks to search knowledge stores for prior decisions, copy test patterns, and experiment history. Skills may also perform direct file reads for simpler lookups.
 
 ## Knowledge Stores
 
 Three separate stores with different schemas:
 
-* **`docs/positioning/`** — Positioning decisions. `current.md` is the active canvas. `archive/` holds dated previous versions.
+* **`docs/positioning/`** — Positioning decisions. `current.md` is the active canvas. `archive/` holds dated previous versions. `pattern-*.md` files capture cross-session patterns created by `/fw:compound`.
 
 * **`docs/copy-tests/`** — Copy attempts with artifact type, target reader, positioning claims, draft, outcome notes.
 
@@ -52,7 +52,7 @@ All files use YAML frontmatter for searchability:
 
 ```yaml
 ---
-type: positioning-decision | copy-test | growth-experiment
+type: positioning-decision | positioning-pattern | copy-test | growth-experiment
 tags: [icp, differentiation, landing-page, ...]
 confidence: high | medium | low
 created: YYYY-MM-DD
@@ -80,9 +80,18 @@ Firm but non-blocking. Three levels:
 
 * **Plain markdown, git-tracked.** No proprietary formats. All outputs are greppable.
 
+## Pipeline Mode
+
+Each skill has a Pipeline Mode section for programmatic invocation. Pipeline Mode is triggered when a skill is invoked by another skill or an automation — the `disable-model-invocation` context indicates the skill should not prompt the user interactively:
+
+- Skip all AskUserQuestion prompts
+- Use provided arguments and sensible defaults
+- Make reasonable assumptions and flag them in the output
+- Write output files without waiting for confirmation
+
 ## Versioning
 
 Every change must update:
 
-1. `.claude-plugin/plugin.json` version
+1. `.claude-plugin/plugin.json` version (and `marketplace.json` version)
 2. `AGENTS.md` structure diagram (if changed)
