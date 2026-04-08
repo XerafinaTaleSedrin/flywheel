@@ -55,9 +55,19 @@ Detects conflicts with prior decisions and forces explicit resolution.
 
 ## Install
 
+Add the marketplace:
 ```
 /plugin marketplace add wonderchook/flywheel
-/plugin install flywheel
+```
+
+Install the plugin:
+```
+/plugin install flywheel@wonderchook-flywheel
+```
+
+Reload to activate:
+```
+/reload-plugins
 ```
 
 Then use the skills from any project:
