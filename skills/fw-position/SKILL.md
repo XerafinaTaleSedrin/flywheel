@@ -1,7 +1,7 @@
 ---
 name: fw:position
 description: Work through April Dunford's positioning framework in sequence. Produces a positioning canvas that downstream skills (/fw:copy, /fw:grow) read automatically. Use when positioning a product, company, or offer for the first time, or when revisiting positioning after a significant change.
-argument-hint: "[product or company name, or context about what you're positioning]"
+argument-hint: "[product name, or 'revise [section]' to update specific sections, or reason for revision]"
 ---
 
 <positioning_context> #$ARGUMENTS </positioning_context>
@@ -14,6 +14,7 @@ Work through April Dunford's 5-component positioning framework. No shortcuts. Th
 
 * Positioning a product, company, or consulting offer for the first time
 * Revisiting positioning after a significant change (new competitor, pivot, new ICP)
+* **Targeted revision** — updating specific sections after insights from `/fw:copy` drift detection or `/fw:grow` experiments
 * "Help me position this", "Who is this for?", "How do I differentiate?"
 * Before running `/fw:copy` or `/fw:grow` — positioning must come first
 
@@ -23,23 +24,88 @@ Work through April Dunford's 5-component positioning framework. No shortcuts. Th
 
 Search for `docs/positioning/current.md` in the user's project.
 
-**If it exists:** Read it and present a summary:
+**If it exists:** Read it in full and determine the session mode:
+
+#### Mode A: Revision Mode
+
+Triggered when the user's argument contains "revise", names a specific section (e.g., "revise segments", "update alternatives"), or describes a specific reason for revisiting (e.g., "drift detection keeps flagging speed claims").
+
+Present the current canvas summary, then confirm what's changing:
+
+> "You have an existing positioning canvas from [date]. Here's what it says:
+> - **Competitive alternatives:** [list]
+> - **Key differentiator:** [summary]
+> - **Target segment:** [summary]
+> - **Frame:** [summary]
+>
+> You want to revise: **[section(s)]**
+> Reason: [the triggering insight, if provided]
+>
+> I'll keep the unchanged sections and walk you through the ones that need updating."
+
+**How revision mode works:**
+
+1. Load the entire current canvas as the working baseline
+2. Jump directly to the target section(s) — skip sections the user isn't revising
+3. For the target section(s), run the full step with enforcement (same questions, same specificity requirements)
+4. **Check downstream propagation:** After updating a section, check whether later sections still hold:
+
+| If you change... | Ask whether these still hold... |
+|------------------|--------------------------------|
+| Competitive alternatives (Step 1) | Unique attributes (Step 2) — "Do your differentiators still hold against these new alternatives?" |
+| Unique attributes (Step 2) | Value chains (Step 3) — "Do these new attributes change the capability → outcome chains?" |
+| Value chains (Step 3) | Customer segments (Step 4) — "Does this new value proposition change who cares most?" |
+| Customer segments (Step 4) | Market frame (Step 5) — "Does this segment change affect which frame makes your value obvious?" |
+| Market frame (Step 5) | No downstream sections — just update the positioning statement |
+
+5. For each downstream section, present the current content and ask: "Does this still hold given the change above, or does it need updating too?" If yes, run the full step. If it holds, keep it.
+6. Reassemble the canvas with changes and proceed to "Assembling the Canvas"
+
+**Revision mode does NOT skip enforcement.** The revised sections get the same specificity requirements as a fresh session. The only thing skipped is re-doing sections that haven't changed and don't need to propagate.
+
+#### Mode B: Start Fresh
+
+Triggered when no existing canvas exists, or the user explicitly says "start fresh" or "start over."
+
+If starting fresh with an existing canvas, ask whether to archive:
+> "Should I archive the current canvas to `docs/positioning/archive/[date].md` before we start?"
+
+Then proceed to the full sequence (all 5 steps).
+
+#### Mode C: Full Revision (default when canvas exists)
+
+When the user runs `/fw:position` with an existing canvas but doesn't specify revision or fresh:
 
 > "You have an existing positioning canvas from [date]. Here's what it says:
 > - **Competitive alternatives:** [list]
 > - **Key differentiator:** [summary]
 > - **Target segment:** [summary]
 >
-> Want to revise this canvas or start fresh?"
+> What do you want to do?
+> 1. **Revise specific sections** — tell me which sections and why
+> 2. **Start fresh** — archive the current canvas and redo all 5 steps
+> 3. **Review and sharpen** — walk through all 5 steps with the current canvas as a starting point"
 
-If starting fresh, ask whether to archive the current canvas:
-> "Should I archive the current canvas to `docs/positioning/archive/[date].md` before we start?"
+Option 3 is a guided review: present each section's current content, ask if it needs updating, only run the full step process for sections the user flags.
 
-**If it doesn't exist:** Proceed directly.
+**If it doesn't exist:** Proceed directly to the full sequence (Mode B).
+
+### Check for learnings and patterns
+
+Search `docs/positioning/` for `pattern-*.md` files and check the canvas for a `## Learnings` section.
+
+**If learnings or patterns exist:** Surface them before starting:
+> "Before we begin, here's what past sessions have taught us about your positioning:
+> - [pattern or learning summary]
+> - [pattern or learning summary]
+>
+> Keep these in mind as we work through the revisions."
+
+This is especially important in revision mode — the triggering insight that led to the revision should connect to any existing patterns.
 
 ### Accept context
 
-If the user provided arguments (product name, context), acknowledge them. If not, prompt:
+If the user provided arguments (product name, context, or revision target), acknowledge them. If not, prompt:
 
 > "What are you positioning? Give me a product name, a company, or a consulting offer — and any context about where you are right now."
 
@@ -48,6 +114,8 @@ If the user provided arguments (product name, context), acknowledge them. If not
 Work through all 5 steps in order. Each step builds on the previous one. Use `references/enforcement-prompts.md` for redirect and warning text when users try to skip steps or give vague answers.
 
 **Important:** The user may go back and revise earlier steps at any time. This is encouraged — insights from later steps often sharpen earlier ones. Update the working canvas and note what changed.
+
+**In revision mode:** Only the targeted steps and their downstream propagation checks are worked through. See Mode A above for the propagation rules.
 
 ---
 
@@ -161,6 +229,12 @@ After user approval:
 - Write the canvas to `docs/positioning/current.md`
 - If a previous `current.md` was archived, note that in the canvas frontmatter
 - Set frontmatter fields: type, tags (extracted from the session), confidence (ask the user), created date, last-updated (today's date), source
+- **In revision mode:** Add a `## Revision History` section at the end of the canvas (or append to an existing one):
+  ```
+  ## Revision History
+  - [date]: Revised [section(s)]. Reason: [triggering insight]. Changes: [what changed].
+  ```
+  This history is valuable context for future sessions — it shows why the positioning evolved.
 
 ## After Saving
 
