@@ -22,7 +22,7 @@ Produces a positioning canvas at `docs/positioning/current.md` that all other sk
 
 Translates positioning into specific copy artifacts:
 
-- Landing page, pitch, bio, outreach, talk abstract, case study, one-liner
+* Landing page, pitch, bio, outreach, talk abstract, case study, one-liner
 
 The key feature is the **drift detector** — it traces every value claim in the draft back to the positioning canvas. Anything that can't be traced gets flagged as a generic insertion. You decide: remove it, rewrite it, or acknowledge the departure.
 
@@ -77,26 +77,32 @@ Produces a handoff-ready experiment card at `docs/growth-experiments/`. If someo
 
 Captures what the other skills don't — the meta-insights about your positioning and messaging that emerge across sessions:
 
-- What surprised you about your positioning choices
-- Which claims translate into grounded copy and which always drift
-- Real-world outcomes from shipped copy and completed experiments
-- Cross-session patterns ("every time we broaden the segment, the copy gets worse")
+* What surprised you about your positioning choices
+
+* Which claims translate into grounded copy and which always drift
+
+* Real-world outcomes from shipped copy and completed experiments
+
+* Cross-session patterns ("every time we broaden the segment, the copy gets worse")
 
 Detects conflicts with prior decisions and forces explicit resolution.
 
 ## Install
 
 Add the marketplace:
+
 ```
 /plugin marketplace add Untangling-Systems/flywheel
 ```
 
 Install the plugin:
+
 ```
 /plugin install flywheel@Untangling-Systems-flywheel
 ```
 
 Reload to activate:
+
 ```
 /reload-plugins
 ```
@@ -104,7 +110,7 @@ Reload to activate:
 Then use the skills from any project:
 
 ```
-/fw:position Hundredweight
+/fw:position MyProduct
 /fw:copy landing-page
 /fw:grow
 /fw:compound
@@ -115,23 +121,20 @@ Then use the skills from any project:
 ### The Loop
 
 ```
-                 ┌→ Copy     → Ship     → Outcomes ──┐
-                 │                                    │
-Position ────────┼→ Pitch    → Deliver  → Outcomes ──┼→ Compound → Position again
-                 │                                    │
-                 ├→ Monetize → Price    → Outcomes ──┤
-                 │                                    │
-                 └→ Grow     → Experiment → Results ──┘
+Position → Copy / Pitch / Monetize / Grow → Outcomes → Compound → Position again
 ```
 
 Positioning is the foundation — every downstream skill reads the canvas. Copy, pitch, monetize, and grow are parallel branches, each producing its own artifact and recording real-world outcomes. `/fw:compound` closes the loop by rolling outcomes and cross-session patterns back into the canvas.
 
 The branches also cross-feed each other:
 
-- **Pitch ↔ Monetize** — pitch ask-stage pushback is a WTP signal that `/fw:monetize` picks up; concrete price points become credible proof in the storyboard
-- **Copy → Monetize** — price mentions in copy-test outcome notes feed the WTP signal inventory
-- **Pitch → Copy** — a finished storyboard becomes source material for shorter artifacts (one-liners, outreach, landing pages)
-- **Grow → any** — completed experiments produce quantified outcomes that land in whichever store the experiment tested
+* **Pitch ↔ Monetize** — pitch ask-stage pushback is a WTP signal that `/fw:monetize` picks up; concrete price points become credible proof in the storyboard
+
+* **Copy → Monetize** — price mentions in copy-test outcome notes feed the WTP signal inventory
+
+* **Pitch → Copy** — a finished storyboard becomes source material for shorter artifacts (one-liners, outreach, landing pages)
+
+* **Grow → any** — completed experiments produce quantified outcomes that land in whichever store the experiment tested
 
 Each session reads from the knowledge stores before starting. Prior decisions surface so you don't relitigate them. Prior copy tests show what messaging worked. Prior storyboards show which insights and asks landed. Prior pricing decisions show WTP signals already collected. Prior experiments show which barriers were confirmed or disproven.
 
@@ -139,13 +142,13 @@ Each session reads from the knowledge stores before starting. Prior decisions su
 
 Five stores with different schemas, all in `docs/` in your project:
 
-| Store | Contents | Created by |
-|-------|----------|------------|
-| `docs/positioning/` | Positioning canvas + archived versions + cross-session patterns | `/fw:position`, `/fw:compound` |
-| `docs/copy-tests/` | Copy artifacts with drift reports and outcome notes | `/fw:copy`, `/fw:compound` |
-| `docs/pitch-storyboards/` | Sales pitch storyboards with drift reports and outcome notes | `/fw:pitch`, `/fw:compound` |
-| `docs/pricing/` | Pricing decision + archived versions + WTP interview findings + patterns | `/fw:monetize`, `/fw:compound` |
-| `docs/growth-experiments/` | Experiment cards with results and learnings | `/fw:grow`, `/fw:compound` |
+| Store                      | Contents                                                                 | Created by                     |
+| -------------------------- | ------------------------------------------------------------------------ | ------------------------------ |
+| `docs/positioning/`        | Positioning canvas + archived versions + cross-session patterns          | `/fw:position`, `/fw:compound` |
+| `docs/copy-tests/`         | Copy artifacts with drift reports and outcome notes                      | `/fw:copy`, `/fw:compound`     |
+| `docs/pitch-storyboards/`  | Sales pitch storyboards with drift reports and outcome notes             | `/fw:pitch`, `/fw:compound`    |
+| `docs/pricing/`            | Pricing decision + archived versions + WTP interview findings + patterns | `/fw:monetize`, `/fw:compound` |
+| `docs/growth-experiments/` | Experiment cards with results and learnings                              | `/fw:grow`, `/fw:compound`     |
 
 All files use YAML frontmatter for searchability. All outputs are plain markdown.
 
@@ -163,26 +166,35 @@ Examples: "That's a metric, not a behavior." "That's a segment, not a person." "
 
 Five research agents search the knowledge stores at the start of each session:
 
-- **positioning-researcher** — surfaces prior decisions, archived canvases, and evolution history
-- **copy-researcher** — finds drift patterns, outcome data, and untested claims
-- **pitch-researcher** — surfaces prior storyboards, insights already tried, and asks that landed
-- **pricing-researcher** — aggregates WTP signals across stores, flags stale pricing vs. canvas, tracks interview findings
-- **growth-researcher** — tracks barrier patterns, running experiments, and result history
+* **positioning-researcher** — surfaces prior decisions, archived canvases, and evolution history
+
+* **copy-researcher** — finds drift patterns, outcome data, and untested claims
+
+* **pitch-researcher** — surfaces prior storyboards, insights already tried, and asks that landed
+
+* **pricing-researcher** — aggregates WTP signals across stores, flags stale pricing vs. canvas, tracks interview findings
+
+* **growth-researcher** — tracks barrier patterns, running experiments, and result history
 
 ## Design Principles
 
-- **Friction is the product.** The forced sequence and specificity requirements produce quality. They are not bugs.
-- **Compound over time.** Session 5 should be faster and sharper than session 1 because the knowledge stores have context.
-- **Framework fidelity.** Dunford's positioning sequence and Lerner's growth sequence are followed in order. The frameworks work because they don't let you skip steps.
-- **Built for founders.** Framework reasoning is surfaced inline so you understand *why* each step matters.
-- **Plain markdown, git-tracked.** No proprietary formats. Everything is greppable.
+* **Friction is the product.** The forced sequence and specificity requirements produce quality. They are not bugs.
+
+* **Compound over time.** Session 5 should be faster and sharper than session 1 because the knowledge stores have context.
+
+* **Framework fidelity.** Dunford's positioning sequence and Lerner's growth sequence are followed in order. The frameworks work because they don't let you skip steps.
+
+* **Built for founders.** Framework reasoning is surfaced inline so you understand *why* each step matters.
+
+* **Plain markdown, git-tracked.** No proprietary formats. Everything is greppable.
 
 ## Inspiration
 
 Flywheel's plugin architecture, compounding philosophy, and enforcement patterns are inspired by [Every.to](https://every.to)'s Claude Code plugins:
 
-- [Compound Engineering](https://github.com/EveryInc/compound-engineering-plugin) — AI-powered development tools that get smarter with every use
-- [Compound Knowledge](https://github.com/EveryInc/compound-knowledge-plugin) — Workflows for knowledge work that compounds over time
+* [Compound Engineering](https://github.com/EveryInc/compound-engineering-plugin) — AI-powered development tools that get smarter with every use
+
+* [Compound Knowledge](https://github.com/EveryInc/compound-knowledge-plugin) — Workflows for knowledge work that compounds over time
 
 Flywheel applies the same "compound over time" approach to marketing frameworks specifically.
 
