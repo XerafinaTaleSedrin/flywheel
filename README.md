@@ -115,12 +115,25 @@ Then use the skills from any project:
 ### The Loop
 
 ```
-Position → Copy → Ship → Record outcomes → Position again
-    ↓                                           ↑
-    → Grow → Experiment → Record results ───────┘
+                 ┌→ Copy     → Ship     → Outcomes ──┐
+                 │                                    │
+Position ────────┼→ Pitch    → Deliver  → Outcomes ──┼→ Compound → Position again
+                 │                                    │
+                 ├→ Monetize → Price    → Outcomes ──┤
+                 │                                    │
+                 └→ Grow     → Experiment → Results ──┘
 ```
 
-Each session reads from the knowledge stores before starting. Prior decisions surface so you don't relitigate them. Prior copy tests show what messaging worked. Prior experiments show which barriers were confirmed or disproven.
+Positioning is the foundation — every downstream skill reads the canvas. Copy, pitch, monetize, and grow are parallel branches, each producing its own artifact and recording real-world outcomes. `/fw:compound` closes the loop by rolling outcomes and cross-session patterns back into the canvas.
+
+The branches also cross-feed each other:
+
+- **Pitch ↔ Monetize** — pitch ask-stage pushback is a WTP signal that `/fw:monetize` picks up; concrete price points become credible proof in the storyboard
+- **Copy → Monetize** — price mentions in copy-test outcome notes feed the WTP signal inventory
+- **Pitch → Copy** — a finished storyboard becomes source material for shorter artifacts (one-liners, outreach, landing pages)
+- **Grow → any** — completed experiments produce quantified outcomes that land in whichever store the experiment tested
+
+Each session reads from the knowledge stores before starting. Prior decisions surface so you don't relitigate them. Prior copy tests show what messaging worked. Prior storyboards show which insights and asks landed. Prior pricing decisions show WTP signals already collected. Prior experiments show which barriers were confirmed or disproven.
 
 ### Knowledge Stores
 
