@@ -1,7 +1,7 @@
 ---
 name: fw:compound
-description: Save session learnings to knowledge stores so future sessions get smarter. Captures positioning insights, copy test outcomes, pitch storyboard results, pricing outcomes, and cross-session patterns. Use after any /fw:position, /fw:copy, /fw:pitch, /fw:monetize, or /fw:grow session, or when returning with real-world results.
-argument-hint: "[optional: what you learned, or 'outcome' to record real-world results]"
+description: Save session learnings to knowledge stores so future sessions get smarter. Captures positioning insights, copy test outcomes, pitch storyboard results, pricing outcomes, and cross-session patterns. Use after any /fw:position, /fw:copy, /fw:pitch, /fw:monetize, or /fw:grow session, or when returning with real-world results. Supports multi-canvas portfolios via the --canvas flag.
+argument-hint: "[optional: what you learned, or 'outcome' to record real-world results] [--canvas path/to/canvas.md]"
 ---
 
 <compound_context> #$ARGUMENTS </compound_context>
@@ -9,6 +9,16 @@ argument-hint: "[optional: what you learned, or 'outcome' to record real-world r
 # Compound
 
 Capture what you learned so the next session starts smarter. Every positioning decision, copy test result, and cross-session insight gets saved where future `/fw:position` and `/fw:copy` runs can find it.
+
+## Canvas Path Resolution
+
+This skill writes learnings back to the positioning canvas (among other places). Path resolution order:
+
+1. **Explicit `--canvas <path>` in the user's arguments.** Use that path.
+2. **If no `--canvas`**, scan `docs/positioning/` for `.md` files (excluding `portfolio.md` and `archive/`). If exactly one exists, use it. If multiple exist, list them and ASK which canvas to append learnings to.
+3. **Fallback**: `docs/positioning/current.md`.
+
+**All references below to `docs/positioning/current.md` should substitute the resolved canvas path.** Note: this skill also reads `docs/positioning/archive/` — that path stays fixed; it's shared history across canvases.
 
 ## When to Use
 
@@ -24,7 +34,7 @@ Capture what you learned so the next session starts smarter. Every positioning d
 
 Check what happened recently by searching the knowledge stores:
 
-1. **Read `docs/positioning/current.md`** — check the `created` date in frontmatter. If created today or referenced in conversation, this is likely a post-positioning session.
+1. **Read the resolved canvas path** (apply Canvas Path Resolution above) — check the `created` date in frontmatter. If created today or referenced in conversation, this is likely a post-positioning session.
 
 2. **Search `docs/copy-tests/`** — check for files created today or referenced in conversation. If found, this is likely a post-copy session.
 
@@ -257,6 +267,7 @@ Use AskUserQuestion:
 When invoked with `disable-model-invocation` context:
 
 - Skip all AskUserQuestion prompts
+- Honor `--canvas <path>` if provided; otherwise apply Canvas Path Resolution silently (single canvas: use it; multiple: use `docs/positioning/current.md` and flag the assumption; none: use `docs/positioning/current.md`)
 - Auto-detect session type from most recently modified files in knowledge stores
 - Extract learnings from the conversation context
 - Save without confirmation

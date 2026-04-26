@@ -22,14 +22,17 @@ flywheel/
 │       └── growth-researcher.md       # Searches docs/growth-experiments/ for past experiments
 └── docs/                            # Knowledge stores (created in user's project)
     ├── positioning/
-    │   ├── current.md               # Active positioning canvas
-    │   └── archive/                 # Previous versions
+    │   ├── current.md               # Active positioning canvas (single-canvas projects)
+    │   ├── {name}.md                # Named canvas (multi-canvas projects, one per product/track)
+    │   ├── portfolio.md             # Optional index of canvases (excluded from canvas scans)
+    │   └── archive/                 # Previous versions (shared across canvases)
     ├── copy-tests/                  # Copy artifacts with drift reports and outcome notes
     ├── pitch-storyboards/           # Sales pitch storyboards with drift reports and outcome notes
     ├── pricing/
-    │   ├── current.md               # Active pricing decision
-    │   ├── archive/                 # Previous versions
-    │   └── wtp-*.md                 # WTP interview guides and findings
+    │   ├── current.md               # Active pricing decision (single-canvas projects)
+    │   ├── {name}.md                # Named pricing decision (mirrors canvas name, e.g. track-a.md)
+    │   ├── archive/                 # Previous versions (shared across canvases)
+    │   └── wtp-*.md                 # WTP interview guides and findings (not canvas-scoped)
     └── growth-experiments/          # Experiment cards with results and learnings
 ```
 
@@ -51,13 +54,15 @@ flywheel/
 
 Five separate stores with different schemas:
 
-* **`docs/positioning/`** — Positioning decisions. `current.md` is the active canvas. `archive/` holds dated previous versions. `pattern-*.md` files capture cross-session patterns created by `/fw:compound`.
+* **`docs/positioning/`** — Positioning decisions. `current.md` is the active canvas for single-canvas projects. Multi-canvas projects use named files (e.g. `track-a.md`, `enterprise.md`) — one file per coherent positioning. `archive/` holds dated previous versions (shared across canvases). `pattern-*.md` files capture cross-session patterns created by `/fw:compound`. `portfolio.md` is an optional human-readable index of all canvases in a multi-canvas project; it is excluded from canvas auto-detection scans and never treated as an active canvas.
+
+  Canvas files may include an optional `## Values-Fit Notes` section (added by `/fw:position --values-check`) capturing founder values tension and the resolution chosen (ship as-is, sharpen a section, or park). This section is not a positioning claim — downstream skills (fw:copy, fw:pitch) must exclude it from drift detection and claims inventory.
 
 * **`docs/copy-tests/`** — Copy attempts with artifact type, target reader, positioning claims, draft, outcome notes.
 
 * **`docs/pitch-storyboards/`** — Sales pitch storyboards with the 7-step narrative (insight, old game, new game, perfect solution, differentiated value, proof, ask), buyer type, meeting format, drift report, and outcome notes.
 
-* **`docs/pricing/`** — Pricing decisions. `current.md` is the active pricing decision with leaky bucket, WTP signals, segmentation, configuration, monetization model, and price points. `archive/` holds dated previous versions. `wtp-*.md` files are WTP interview guides with captured findings. `pattern-*.md` files capture cross-session pricing patterns.
+* **`docs/pricing/`** — Pricing decisions. `current.md` is the active pricing decision for single-canvas projects. Multi-canvas projects use named files that mirror the canvas name (e.g. `track-a.md` for `docs/positioning/track-a.md`). Contains leaky bucket, WTP signals, segmentation, configuration, monetization model, and price points. `archive/` holds previous versions (shared across canvases). `wtp-*.md` files are WTP interview guides (not canvas-scoped). `pattern-*.md` files capture cross-session pricing patterns.
 
 * **`docs/growth-experiments/`** — Experiment cards with behavior, barrier, hypothesis, test design, success criteria, result.
 
