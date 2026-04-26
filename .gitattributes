@@ -1,0 +1,24 @@
+# Normalize text files to LF in the repo (Windows checkout still gets CRLF locally)
+* text=auto eol=lf
+
+# Binary files: never modify
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.pdf binary
+*.docx binary
+*.xlsx binary
+*.pptx binary
+*.zip binary
+*.tar binary
+*.gz binary
+*.mp3 binary
+*.mp4 binary
+*.wav binary
+*.ttf binary
+*.woff binary
+*.woff2 binary
+
