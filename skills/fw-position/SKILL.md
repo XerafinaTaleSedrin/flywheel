@@ -10,7 +10,7 @@ argument-hint: "[product name, or 'revise [section]' to update specific sections
 
 Work through April Dunford's 5-component positioning framework. No shortcuts. The output is a positioning canvas that becomes the foundation for copy, growth experiments, and quarterly planning.
 
-## Canvas Path Resolution (Komorebi multi-canvas patch, 2026-04-21)
+## Canvas Path Resolution
 
 This skill writes the positioning canvas. Path resolution order:
 

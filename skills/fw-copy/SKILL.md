@@ -10,7 +10,7 @@ argument-hint: "[artifact type: landing-page, pitch, bio, outreach, talk-abstrac
 
 Translate your positioning canvas into a specific copy artifact — landing page, pitch, bio, outreach, talk abstract, case study, or one-liner. Every claim in the draft is traced back to the canvas. Anything that doesn't trace back gets flagged.
 
-## Canvas Path Resolution (Komorebi multi-canvas patch, 2026-04-21)
+## Canvas Path Resolution
 
 This skill reads a positioning canvas to produce copy. The path is resolved in this order:
 
@@ -358,6 +358,7 @@ Use AskUserQuestion:
 When invoked with `disable-model-invocation` context:
 
 - Skip all AskUserQuestion prompts
+- Honor `--canvas <path>` if provided; otherwise apply Canvas Path Resolution silently (single canvas: use it; multiple: use `docs/positioning/current.md` and flag the assumption; none: use `docs/positioning/current.md`)
 - Use provided arguments for artifact type
 - Default to the first customer segment in the canvas as the reader
 - Select the top 2 value chains by specificity (most concrete outcomes)

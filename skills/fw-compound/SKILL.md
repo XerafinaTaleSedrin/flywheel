@@ -10,7 +10,7 @@ argument-hint: "[optional: what you learned, or 'outcome' to record real-world r
 
 Capture what you learned so the next session starts smarter. Every positioning decision, copy test result, and cross-session insight gets saved where future `/fw:position` and `/fw:copy` runs can find it.
 
-## Canvas Path Resolution (Komorebi multi-canvas patch, 2026-04-21)
+## Canvas Path Resolution
 
 This skill writes learnings back to the positioning canvas (among other places). Path resolution order:
 
@@ -34,7 +34,7 @@ This skill writes learnings back to the positioning canvas (among other places).
 
 Check what happened recently by searching the knowledge stores:
 
-1. **Read `docs/positioning/current.md`** — check the `created` date in frontmatter. If created today or referenced in conversation, this is likely a post-positioning session.
+1. **Read the resolved canvas path** (apply Canvas Path Resolution above) — check the `created` date in frontmatter. If created today or referenced in conversation, this is likely a post-positioning session.
 
 2. **Search `docs/copy-tests/`** — check for files created today or referenced in conversation. If found, this is likely a post-copy session.
 
@@ -267,6 +267,7 @@ Use AskUserQuestion:
 When invoked with `disable-model-invocation` context:
 
 - Skip all AskUserQuestion prompts
+- Honor `--canvas <path>` if provided; otherwise apply Canvas Path Resolution silently (single canvas: use it; multiple: use `docs/positioning/current.md` and flag the assumption; none: use `docs/positioning/current.md`)
 - Auto-detect session type from most recently modified files in knowledge stores
 - Extract learnings from the conversation context
 - Save without confirmation

@@ -10,7 +10,7 @@ argument-hint: "[behavior you want to increase, or context about your growth cha
 
 Design a growth experiment that's specific enough for someone else to run. Matt Lerner's framework: most growth problems are behavior problems. Find the behavior, diagnose the barrier, test the smallest intervention.
 
-## Canvas Path Resolution (Komorebi multi-canvas patch, 2026-04-21)
+## Canvas Path Resolution
 
 This skill reads a positioning canvas to design experiments. The path is resolved in this order:
 
@@ -250,6 +250,7 @@ Use AskUserQuestion:
 When invoked with `disable-model-invocation` context:
 
 - Skip all AskUserQuestion prompts
+- Honor `--canvas <path>` if provided; otherwise apply Canvas Path Resolution silently (single canvas: use it; multiple: use `docs/positioning/current.md` and flag the assumption; none: use `docs/positioning/current.md`)
 - Use provided arguments for the target behavior
 - Default to the first customer segment and top value chain from the canvas
 - Select the barrier closest to the action (friction > comprehension > awareness)

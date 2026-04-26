@@ -12,7 +12,7 @@ Work through April Dunford's 7-component sales pitch storyboard (from her book *
 
 This is the conversation arc, not the 60-second verbal blurb — for the short pitch, see `/fw:copy pitch`.
 
-## Canvas Path Resolution (Komorebi multi-canvas patch, 2026-04-21)
+## Canvas Path Resolution
 
 This skill reads a positioning canvas to ground the storyboard's insight, old game, differentiated value, and proof. Path resolution order:
 
@@ -497,6 +497,8 @@ Use AskUserQuestion:
 When invoked with `disable-model-invocation` context:
 
 * Skip all AskUserQuestion prompts
+
+* Honor `--canvas <path>` if provided; otherwise apply Canvas Path Resolution silently (single canvas: use it; multiple: use `docs/positioning/current.md` and flag the assumption; none: use `docs/positioning/current.md`)
 
 * Use provided arguments and the canvas as context
 
